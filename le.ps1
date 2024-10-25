@@ -16,6 +16,7 @@ $adapter = New-Object System.Data.OleDb.OleDbDataAdapter $cmd;
 $dataset = New-Object System.Data.DataSet;
 $adapter.Fill($dataset);
 $Rexistros = $dataset.tables[0];
+
 $Saida = $Rexistros|Select-Object data, comando|ConvertTo-Json;
 Write-Output $Saida;
 $conn.close();
