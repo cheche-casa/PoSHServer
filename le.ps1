@@ -17,6 +17,6 @@ $dataset = New-Object System.Data.DataSet;
 $Null = $adapter.Fill($dataset);
 $Rexistros = $dataset.tables[0];
 
-$Saida = $Rexistros|Select-Object data, comando|ConvertTo-Json;
+$Saida = $Rexistros|Select-Object serial, comando|ConvertTo-Json;
 Write-Output $Saida;
 $conn.close();
