@@ -9,12 +9,12 @@ catch {
     Write-Output "$Cerro-$($Error[0].ToString())";
 }
 
-$D = Get-Date($PoSHQuery.D);
-$cmd.CommandText = "SELECT data, comando FROM [dbo].[comandos] WHERE data > CONVERT(DATETIME, '$($D)', 102) ORDER BY data";
+$S = $PoSHQuery.S;
+$cmd.CommandText = "SELECT serial, comando FROM [dbo].[comandos] WHERE serial > $S ORDER BY serial";
 
 $adapter = New-Object System.Data.OleDb.OleDbDataAdapter $cmd;
 $dataset = New-Object System.Data.DataSet;
-$adapter.Fill($dataset);
+$Null = $adapter.Fill($dataset);
 $Rexistros = $dataset.tables[0];
 
 $Saida = $Rexistros|Select-Object data, comando|ConvertTo-Json;

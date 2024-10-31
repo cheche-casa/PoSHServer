@@ -10,8 +10,12 @@ catch {
 }
 
 $C = $PoSHQuery.C;
-$Query = "INSERT INTO [dbo].[comandos] ([comando]) VALUES ('$($C)')";
-
+$Query = "INSERT INTO [dbo].[comandos] ([comando]) VALUES ('$($C)');SELECT SCOPE_IDENTITY() AS NewID;";
 $cmd.CommandText = $Query;
-$cmd.ExecuteNonQuery();
+$Serial = $cmd.ExecuteScalar();
+$Resultado = [PSCustomObject]@{
+    serial = $Serial
+}
+$Saida = $Resultado|ConvertTo-Json;
+Write-Output $Saida;
 $conn.close();
