@@ -1,5 +1,5 @@
 $conn = New-Object System.Data.OleDb.OleDbConnection;
-$conn.ConnectionString= "Provider=SQLOLEDB;Data Source=pccheche;Initial Catalog=Merca;User Id=poshserver;Password=N0cturn1dade;";
+$conn.ConnectionString= "Provider=SQLOLEDB;Data Source=pccheche;Initial Catalog=Merca;User Id=********;Password=********;";
 $cmd = New-Object System.Data.OleDb.OleDbCommand;
 $cmd.Connection = $conn;
 try {
