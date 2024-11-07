@@ -18,5 +18,10 @@ $Null = $adapter.Fill($dataset);
 $Rexistros = $dataset.tables[0];
 
 $Saida = $Rexistros|Select-Object serial, comando|ConvertTo-Json;
-Write-Output $Saida;
+If ($Rexistros.Rows.Count -gt 1){
+    Write-Output $Saida;
+}
+else {
+    Write-Output "[$Saida]";
+}
 $conn.close();
