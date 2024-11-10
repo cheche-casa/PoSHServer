@@ -10,6 +10,9 @@ catch {
 }
 
 $C = $PoSHQuery.C;
+$C = $([System.Web.HttpUtility]::UrlEncode($C, [System.Text.Encoding]::GetEncoding("ISO-8859-1")));
+$C = $([System.Web.HttpUtility]::UrlDecode($C, [System.Text.Encoding]::GetEncoding("UTF-8")));
+
 $Query = "INSERT INTO [dbo].[comandos] ([comando]) VALUES ('$($C)');SELECT SCOPE_IDENTITY() AS NewID;";
 $cmd.CommandText = $Query;
 $Serial = $cmd.ExecuteScalar();
