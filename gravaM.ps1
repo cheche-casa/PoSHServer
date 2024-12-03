@@ -10,12 +10,13 @@ catch {
 }
 
 $T = $PoSHQuery.T;
+$TA = $PoSHQuery.TA;
 $C = $PoSHQuery.C;
 $V = $PoSHQuery.V;
 $V = $([System.Web.HttpUtility]::UrlEncode($V, [System.Text.Encoding]::GetEncoding("ISO-8859-1")));
 $V = $([System.Web.HttpUtility]::UrlDecode($V, [System.Text.Encoding]::GetEncoding("UTF-8")));
 
-$Query = "INSERT INTO [dbo].[movementos] ([tipo],[chave],[valores]) VALUES ($($T),$($C),'$($V)');SELECT SCOPE_IDENTITY() AS NewID;";
+$Query = "INSERT INTO [dbo].[movementos] ([tipo],[taboa],[chave],[valores]) VALUES ($($T),'$($TA)',$($C),'$($V)');SELECT SCOPE_IDENTITY() AS NewID;";
 $cmd.CommandText = $Query;
 $Serial = $cmd.ExecuteScalar();
 $Resultado = [PSCustomObject]@{

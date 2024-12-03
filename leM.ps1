@@ -10,7 +10,7 @@ catch {
 }
 
 $S = $PoSHQuery.S;
-$cmd.CommandText = "SELECT serial, tipo, chave, valores FROM [dbo].[movementos] WHERE serial > $S ORDER BY serial";
+$cmd.CommandText = "SELECT serial, tipo, taboa, chave, valores FROM [dbo].[movementos] WHERE serial > $S ORDER BY serial";
 
 $adapter = New-Object System.Data.OleDb.OleDbDataAdapter $cmd;
 $dataset = New-Object System.Data.DataSet;
