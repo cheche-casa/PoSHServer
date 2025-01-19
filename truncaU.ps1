@@ -9,7 +9,8 @@ catch {
     Write-Output "$Cerro-$($Error[0].ToString())";
 }
 
-$Query = "EXEC [dbo].[truncaMovementos];";
+$U = $PoSHQuery.U;
+$Query = "EXEC [dbo].[truncaMovementos] @schemaName = '$U';";
 $cmd.CommandText = $Query;
 $Null = $cmd.ExecuteNonQuery();
 $conn.close();

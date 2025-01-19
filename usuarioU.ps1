@@ -9,7 +9,20 @@ catch {
     Write-Output "$Cerro-$($Error[0].ToString())";
 }
 
-$Query = "EXEC [dbo].[truncaMovementos];";
+$U = $PoSHQuery.U;
+$Query = "SELECT COUNT(*) FROM USUARIOS WHERE Id ='$U';";
 $cmd.CommandText = $Query;
-$Null = $cmd.ExecuteNonQuery();
+try {
+    $Total = $cmd.ExecuteScalar();
+    $Resultado = [PSCustomObject]@{
+        usuario = $Total
+    }
+}
+Catch {
+    $Resultado = [PSCustomObject]@{
+        usuario = 0
+    }
+}
+$Saida = $Resultado|ConvertTo-Json;
+Write-Output $Saida;
 $conn.close();
