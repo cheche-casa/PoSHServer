@@ -10,6 +10,11 @@ catch {
 }
 
 $U = $PoSHQuery.U;
+
+If ($U -eq "importar"){
+    $U = "dbo";
+}
+
 $Query = "SELECT IDENT_CURRENT('[$U].[movementos]') AS Serial;";
 $cmd.CommandText = $Query;
 $Serial = $cmd.ExecuteScalar();

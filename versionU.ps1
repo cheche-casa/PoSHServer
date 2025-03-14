@@ -10,7 +10,14 @@ catch {
 }
 
 $U = $PoSHQuery.U;
-$Query = "SELECT Version FROM USUARIOS WHERE Id ='$U';";
+
+If ($U -eq "importar"){
+    $Query = "SELECT 0;"
+}
+eLSE{
+    $Query = "SELECT Version FROM USUARIOS WHERE Id ='$U';";
+}
+
 $cmd.CommandText = $Query;
 try {
     $Version = $cmd.ExecuteScalar();

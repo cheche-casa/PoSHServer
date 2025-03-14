@@ -11,6 +11,11 @@ catch {
 
 $S = $PoSHQuery.S;
 $U = $PoSHQuery.U;
+
+If ($U -eq "importar"){
+    $U = "dbo";
+}
+
 $cmd.CommandText = "SELECT serial, tipo, taboa, chave, valores FROM [$U].[movementos] WHERE serial > $S ORDER BY serial";
 
 $adapter = New-Object System.Data.OleDb.OleDbDataAdapter $cmd;

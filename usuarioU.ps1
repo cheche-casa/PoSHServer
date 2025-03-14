@@ -10,7 +10,13 @@ catch {
 }
 
 $U = $PoSHQuery.U;
-$Query = "SELECT COUNT(*) FROM USUARIOS WHERE Id ='$U';";
+
+If ($U -eq "importar"){
+    $Query = "SELECT 1;"
+}
+eLSE{
+    $Query = "SELECT COUNT(*) FROM USUARIOS WHERE Id ='$U';";
+}
 $cmd.CommandText = $Query;
 try {
     $Total = $cmd.ExecuteScalar();
