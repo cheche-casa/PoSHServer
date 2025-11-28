@@ -11,8 +11,11 @@ catch {
 
 $U = $PoSHQuery.U;
 
-If ($U -eq "importar"){
-    $U = "dbo";
+switch ($U) {
+    "importar" { $U = "dbo" }
+    "importar0" { $U = "galego" }
+    "importar1" { $U = "castelan" }
+    "importar2" { $U = "ingles" }
 }
 
 $Query = "SELECT IDENT_CURRENT('[$U].[movementos]') AS Serial;";

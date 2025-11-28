@@ -12,8 +12,11 @@ catch {
 $S = $PoSHQuery.S;
 $U = $PoSHQuery.U;
 
-If ($U -eq "importar"){
-    $U = "dbo";
+switch ($U) {
+    "importar" { $U = "dbo" }
+    "importar0" { $U = "galego" }
+    "importar1" { $U = "castelan" }
+    "importar2" { $U = "ingles" }
 }
 
 $cmd.CommandText = "SELECT serial, tipo, taboa, chave, valores FROM [$U].[movementos] WHERE serial > $S ORDER BY serial";

@@ -11,7 +11,7 @@ catch {
 
 $U = $PoSHQuery.U;
 
-If ($U -eq "importar"){
+If ($U -like "importar*"){
     $Query = "SELECT 1;"
 }
 eLSE{
