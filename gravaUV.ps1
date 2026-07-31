@@ -26,6 +26,7 @@ try {
 
     foreach ($m in $Movementos) {
 
+        # el conversor anterior no hace falta porque ya viene en JSON
         $V = $([System.Web.HttpUtility]::UrlDecode($m.valores, [System.Text.Encoding]::GetEncoding("UTF-8")))
 
         $pTipo.Value = $m.tipo
